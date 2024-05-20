@@ -1,0 +1,12 @@
+[server]
+maxUploadSize=1028
+
+[theme]
+base = "light"
+primaryColor="#1E3A8A"                # Dark Blue from the logo
+secondaryBackgroundColor="#FCA311"    # Orange from the logo
+textColor="#000000"                   # Black (assuming for contrast with light background)
+backgroundColor = "#FFFFFF"           # White for light mode
+
+[client]
+showSidebarNavigation = false
