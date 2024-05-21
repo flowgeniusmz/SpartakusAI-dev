@@ -13,6 +13,8 @@ def initialize_session_states():
             'thread_id': None,
             'vector_store_id': None,
             'user_role': None,
+            'business_name': None,
+            'business_address': None,
             'user_auth_type': None,
             'user_authenticated': False,
             'user_created': None,
@@ -36,10 +38,12 @@ def initialize_session_states():
             'lastname_column': st.secrets.supabase.lastname_column,
             'fullname_column': st.secrets.supabase.fullname_column,
             'createddate_column': st.secrets.supabase.createddate_column,
+            'businessname_column': st.secrets.supabase.businessname_column,
+            'businessaddress_column': st.secrets.supabase.businessaddress_column,
             'supabase_client': create_client(supabase_url=st.secrets.supabase.url, supabase_key=st.secrets.supabase.api_key_admin),
             'openai_client': OpenAI(api_key=st.secrets.openai.api_key),
             'users_table': st.secrets.supabase.users_table,
-            'existing_user_select_string': f"{st.secrets.supabase.username_column}, {st.secrets.supabase.password_column}, {st.secrets.supabase.vstoreid_column}, {st.secrets.supabase.threadid_column}, {st.secrets.supabase.userrole_column}, {st.secrets.supabase.firstname_column}, {st.secrets.supabase.lastname_column}, {st.secrets.supabase.fullname_column}, {st.secrets.supabase.createddate_column}"
+            'existing_user_select_string': f"{st.secrets.supabase.username_column}, {st.secrets.supabase.password_column}, {st.secrets.supabase.vstoreid_column}, {st.secrets.supabase.threadid_column}, {st.secrets.supabase.userrole_column}, {st.secrets.supabase.firstname_column}, {st.secrets.supabase.lastname_column}, {st.secrets.supabase.fullname_column}, {st.secrets.supabase.createddate_column}, {st.secrets.supabase.businessname_column}, {st.secrets.supabase.businessaddress_column}"
         }
 
     if 'request_headers' not in st.session_state:
