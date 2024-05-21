@@ -14,10 +14,10 @@ os.makedirs(pages_dir, exist_ok=True)
 
 # Template for the content of each page
 page_template = """import streamlit as st
-from classes import pagesetup_class as pageclass
+from config import pagesetup as ps
 
 page_number = {page_number}
-pageclass.PageSetup(page_number=page_number)
+ps.master_page_display_styled_popmenu_pop(varPageNumber=page_number)
 """
 
 # Create a Python file for each page

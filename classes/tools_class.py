@@ -1,3 +1,5 @@
+import googlemaps.addressvalidation
+import googlemaps.geocoding
 import streamlit as st
 from openai import OpenAI
 from simple_salesforce import Salesforce
@@ -6,11 +8,13 @@ import pandas as pd
 import json
 import time
 import requests
+from googlemaps import Client as gClient, addressvalidation, places, geocoding, geolocation
 
 class Tools:
     def __init__(self):
-        self.sf = Salesforce(username=st.secrets.salesforce.username, password=st.secrets.salesforce.password, security_token=st.secrets.salesforce.security_token)
+        self.salesforce_client = Salesforce(username=st.secrets.salesforce.username, password=st.secrets.salesforce.password, security_token=st.secrets.salesforce.security_token)
         self.tavily_client = TavilyClient(api_key=st.secrets.tavily.api_key)
+        self.google_client = gClient(key=st.secrets.googleconfig.maps_api_key)
         self.headers = {
             'Accept': 'application/json',
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
@@ -86,6 +90,17 @@ class Tools:
         )
         
         return search_response
+
+    def validate_address(self, address_lines):
+        self.address_validation_response = addressvalidation.addressvalidation(client=self.google_client, addressLines=address_lines, regionCode="US", enableUspsCass=True)
+        # print(self.addvalidate)
+        # ['1840 Coralito Ln', 'Elgin, IL 60124']
+    
+    def get_geocode(self, address_lines):
+        self.address_geocode_response = geocoding.geocode(client=self.google_client, address=address_lines, region="US")
+
+    def places_search(self, query):
+        self.places_search_response = places.places(client=self.google_client, query=query, region="US")
 
     def execute_soql_query(self, query):
         """
@@ -209,3 +224,11 @@ class Tools:
                 }
             }
         ]
+    
+a = Tools()
+#b = a.validate_address()
+#b = a.get_geocode(address_lines=['1840 Coralito Ln', 'Elgin, IL 60124'])
+# b = a.places_search(query="Jewel Osco Elgin IL")
+# print(a.places_search_response)
+
+print(a.search_tavily(query="What year was the Jewel Osco in South Elgin built? How old is its roof?"))

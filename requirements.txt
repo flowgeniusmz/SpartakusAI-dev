@@ -37,3 +37,4 @@ Scrapy          #https://pypi.org/project/Scrapy/
 playwright
 scrapegraphai
 yelpapi
+googlemaps

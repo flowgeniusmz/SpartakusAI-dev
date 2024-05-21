@@ -24,6 +24,7 @@ class Assistant():
         self.tools_file_search = {"type": "file_search"} 
         self.tools_functions = []
         
+        
     def initialize_messages(self):
         self.existing_thread_messages = self.client.beta.threads.messages.list(thread_id=self.thread_id, order="desc")
         self.display_messages = [{"role": "assistant", "content": st.secrets.messageconfig.initial_assistant_message}]
@@ -73,7 +74,7 @@ class Assistant():
                 break
             elif self.run.status == "requires_action":
                 self.tool_calls = self.run.required_action.submit_tool_outputs.tool_calls
-                self.requires_action_type = self.run.required_action.type # should be submit tool outputs
+                self.requires_action_type = self.run.required_action.type #should be submit tool outputs
                 self.submit_tool_outputs()
                 if self.tool_outputs:
                     self.retrieve_run()
@@ -81,16 +82,11 @@ class Assistant():
     def submit_tool_outputs(self):
         self.tool_outputs = []
         for tool_call in self.tool_calls:
-            tool_name = tool_call.function.name
-            tool_args = json.loads(tool_call.function.arguments)
-            tool_id = tool_call.id
-            
-            # Dynamically call the tool method if it exists in the Tools class
-            if hasattr(self.assistant_tools, tool_name):
-                tool_method = getattr(self.assistant_tools, tool_name)
-                tool_output = tool_method(**tool_args)
-                tool_call_output = {"tool_call_id": tool_id, "output": tool_output}
-                self.tool_outputs.append(tool_call_output)
-
-# Instantiate the Assistant class
-assistant = Assistant()
+            toolname = tool_call.function.name
+            toolargs = json.loads(tool_call.function.arguments)
+            toolid = tool_call.id
+            if toolname == "tavily_search":
+                toolarg = toolargs['query']
+                tooloutput = self.assistant_tools.tavily_search(query=toolarg)
+                toolcalloutput = {"tool_call_id": toolid, "output": tooloutput}
+                self.tool_outputs.append(toolcalloutput)
