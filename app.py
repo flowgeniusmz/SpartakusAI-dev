@@ -13,7 +13,7 @@ ps.display_background_image()
 ss.initialize_session_states()
 
 # 3. Set Page Title
-ps.set_title_manual(varTitle="WrestleAI", varSubtitle="Login / Registration", varDiv=True)
+ps.set_title_manual(varTitle="SpartakusAI", varSubtitle="Login / Registration", varDiv=True)
 
 # 4. Initialize UserFlow
 user_flow = user_class.UserFlow()
@@ -27,3 +27,4 @@ elif not st.session_state.user['userauth_complete']:
 else:
     # Redirect to home page if the userflow is complete
     ps.switch_to_homepage()
+   # st.switch_page(page="pages/1_🏠_Home.py")

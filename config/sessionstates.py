@@ -22,7 +22,7 @@ def initialize_session_states():
             'userauth_complete': False,
             'userflow_complete': False,
             'usertypes': ["New User Registration", "Existing User Sign In"],
-            'userroles': ["Admin", "Athlete", "Coach"],
+            'userroles': ["Admin", "Client", "Carrier"],
             'user_data': {},
         }
         

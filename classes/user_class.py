@@ -24,7 +24,7 @@ class User():
             'fullname': f"{firstname} {lastname}",
             'user_role': userrole,
             'thread_id': self.auth_settings['openai_client'].beta.threads.create(metadata=self.thread_metadata).id,
-            'vector_store_id': self.auth_settings['openai_client'].beta.vector_stores.create(name=f"WrestleAI - {firstname} {lastname}").id,
+            'vector_store_id': self.auth_settings['openai_client'].beta.vector_stores.create(name=f"SpartakusAI - {firstname} {lastname}").id,
             'user_created': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             'business_name': business_name,
             'business_address': business_address
@@ -150,7 +150,7 @@ class UserFlow():
                             label="Submit",
                             key="addnewuser",
                             on_click=self.userflow2_userauth_callback,
-                            args=("new", st.session_state.username, st.session_state.password, st.session_state.firstname, st.session_state.lastname, st.session_state.user_role),
+                            args=("new", st.session_state.username, st.session_state.password, st.session_state.firstname, st.session_state.lastname, st.session_state.user_role, st.session_state.business_name, st.session_state.business_address),
                             type="primary"
                         )
                     elif st.session_state.user['user_auth_type'] == "existing":
@@ -162,10 +162,10 @@ class UserFlow():
                             type="primary"
                         )
 
-    def userflow2_userauth_callback(self, user_type, username, password, firstname=None, lastname=None, userrole=None):
+    def userflow2_userauth_callback(self, user_type, username, password, firstname=None, lastname=None, userrole=None, business_name=None, business_address=None):
         if userrole is not None:
             userrole = userrole.lower()
-        self.user.initialize_user_authentication(user_type, username, password, firstname, lastname, userrole)
+        self.user.initialize_user_authentication(user_type, username, password, firstname, lastname, userrole, business_name, business_address)
         st.session_state.user['userauth_complete'] = True
         st.session_state.user['userflow_complete'] = True
         st.session_state.user['username'] = self.user.user_data['username']

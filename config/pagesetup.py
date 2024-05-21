@@ -142,7 +142,7 @@ def get_component_pagelinksection():
             get_component_pagelink_styled(3)
         with link_columns_row1[2]:
             get_component_pagelink_styled(2)
-            get_component_pagelink_styled(4)
+            #get_component_pagelink_styled(4)
 
 def get_component_pagelinksection_styled():
     link_container = st.container(border=False)
@@ -153,7 +153,7 @@ def get_component_pagelinksection_styled():
             get_component_pagelink_styled(3)
         with link_columns_row1[2]:
             get_component_pagelink_styled(2)
-            get_component_pagelink_styled(4)
+            #get_component_pagelink_styled(4)
 
 def get_component_pagelinksection_styled_popover():
     link_container = st.container(border=False)
@@ -165,7 +165,7 @@ def get_component_pagelinksection_styled_popover():
             #get_component_pagelink_styled_popover(5)
         with link_columns_row1[2]:
             get_component_pagelink_styled_popover(2)
-            get_component_pagelink_styled_popover(4)
+            #get_component_pagelink_styled_popover(4)
             
 
         
@@ -183,7 +183,7 @@ def get_component_overview(varPageNumber: int):
 
 def display_background_image():
     # Set the Streamlit image for branding as the background with transparency
-    background_image = 'https://images.builderservices.io/s/cdn/v1.0/i/m?url=https%3A%2F%2Fstorage.googleapis.com%2Fproduction-domaincom-v1-0-8%2F048%2F1724048%2F4RBifvGs%2Ff0606537caa84f278e26a308da77bb36&methods=resize%2C1000%2C5000'
+    background_image = "assets/logo/logo.png"
     st.markdown(
         f"""
         <style>
@@ -198,7 +198,7 @@ def display_background_image():
 
 def display_background_image2():
     # Set the Streamlit image for branding as the background with transparency
-    background_image = 'https://images.builderservices.io/s/cdn/v1.0/i/m?url=https%3A%2F%2Fstorage.googleapis.com%2Fproduction-domaincom-v1-0-8%2F048%2F1724048%2F4RBifvGs%2Ff0606537caa84f278e26a308da77bb36&methods=resize%2C1000%2C5000'
+    background_image = "assets/logo/logo.png"
     st.markdown(
         f"""
         <style>
@@ -217,9 +217,9 @@ def create_sidebar_nav(varPageNumber: int):
     st.sidebar.page_link(page=get_pageconfig_item(varPageNumber=1, varPageConfigType="paths"), label=get_pageconfig_item(varPageNumber=1, varPageConfigType="subtitles"), disabled=(varPageNumber == 1))
     st.sidebar.page_link(page=get_pageconfig_item(varPageNumber=2, varPageConfigType="paths"), label=get_pageconfig_item(varPageNumber=2, varPageConfigType="subtitles"), disabled=(varPageNumber == 2))
     st.sidebar.page_link(page=get_pageconfig_item(varPageNumber=3, varPageConfigType="paths"), label=get_pageconfig_item(varPageNumber=3, varPageConfigType="subtitles"), disabled=(varPageNumber == 3))
-    st.sidebar.page_link(page=get_pageconfig_item(varPageNumber=4, varPageConfigType="paths"), label=get_pageconfig_item(varPageNumber=4, varPageConfigType="subtitles"), disabled=(varPageNumber == 4))
-    st.sidebar.page_link(page=get_pageconfig_item(varPageNumber=5, varPageConfigType="paths"), label=get_pageconfig_item(varPageNumber=5, varPageConfigType="subtitles"), disabled=(varPageNumber == 5))
-    st.sidebar.page_link(page=get_pageconfig_item(varPageNumber=6, varPageConfigType="paths"), label=get_pageconfig_item(varPageNumber=6, varPageConfigType="subtitles"), disabled=(varPageNumber == 6))
+    # st.sidebar.page_link(page=get_pageconfig_item(varPageNumber=4, varPageConfigType="paths"), label=get_pageconfig_item(varPageNumber=4, varPageConfigType="subtitles"), disabled=(varPageNumber == 4))
+    # st.sidebar.page_link(page=get_pageconfig_item(varPageNumber=5, varPageConfigType="paths"), label=get_pageconfig_item(varPageNumber=5, varPageConfigType="subtitles"), disabled=(varPageNumber == 5))
+    # st.sidebar.page_link(page=get_pageconfig_item(varPageNumber=6, varPageConfigType="paths"), label=get_pageconfig_item(varPageNumber=6, varPageConfigType="subtitles"), disabled=(varPageNumber == 6))
 
 
 def get_blue_header(varText: str):
@@ -247,7 +247,7 @@ def get_sidebar_pagelinks():
 def get_userflow_setup():
     display_background_image()
     get_page_styling()
-    set_title_manual(varTitle="WrestleAI", varSubtitle="User Authentication")
+    set_title_manual(varTitle="SpartakusAI", varSubtitle="User Authentication")
     cc = st.columns([1,3,1])
     with cc[1]:
         main_container = st.container(border=True, height=600)
@@ -261,8 +261,8 @@ def popover_menu(varPageNumber: int):
         st.page_link(page=get_pageconfig_item(varPageNumber=1, varPageConfigType="paths"), label=get_pageconfig_item(varPageNumber=1, varPageConfigType="subtitles"), disabled=(varPageNumber == 1))
         st.page_link(page=get_pageconfig_item(varPageNumber=2, varPageConfigType="paths"), label=get_pageconfig_item(varPageNumber=2, varPageConfigType="subtitles"), disabled=(varPageNumber == 2))
         st.page_link(page=get_pageconfig_item(varPageNumber=3, varPageConfigType="paths"), label=get_pageconfig_item(varPageNumber=3, varPageConfigType="subtitles"), disabled=(varPageNumber == 3))
-        st.page_link(page=get_pageconfig_item(varPageNumber=4, varPageConfigType="paths"), label=get_pageconfig_item(varPageNumber=4, varPageConfigType="subtitles"), disabled=(varPageNumber == 4))
-        st.page_link(page=get_pageconfig_item(varPageNumber=5, varPageConfigType="paths"), label=get_pageconfig_item(varPageNumber=5, varPageConfigType="subtitles"), disabled=(varPageNumber == 5))
+        # st.page_link(page=get_pageconfig_item(varPageNumber=4, varPageConfigType="paths"), label=get_pageconfig_item(varPageNumber=4, varPageConfigType="subtitles"), disabled=(varPageNumber == 4))
+        # st.page_link(page=get_pageconfig_item(varPageNumber=5, varPageConfigType="paths"), label=get_pageconfig_item(varPageNumber=5, varPageConfigType="subtitles"), disabled=(varPageNumber == 5))
         
 def get_pageconfig_title_with_popmenu(varPageNumber: int, varDiv: bool=True):
     headercontainer = st.container(border=False)
