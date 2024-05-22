@@ -3,7 +3,7 @@ from openai import OpenAI
 import time
 import json
 from tavily import TavilyClient
-from classes.tools_class import Tools
+from classes.tools_class2 import Tools
 
 class Assistant():
     def __init__(self):

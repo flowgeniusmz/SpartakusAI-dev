@@ -14,4 +14,7 @@ class AcordForms(Enum):
     Form_137 = AccordForm137
     Form_140 = AccordForm140
 
-a
+
+a = AcordForms
+
+print(a.Form_125.u)

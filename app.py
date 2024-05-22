@@ -1,6 +1,6 @@
 import streamlit as st
 from config import pagesetup as ps, sessionstates as ss
-from classes import user_class
+from classes import user_class, pagesetup_class
 
 # 1. Set Page Config
 st.set_page_config(page_title=st.secrets.appconfig.app_name, page_icon=st.secrets.appconfig.app_icon, layout=st.secrets.appconfig.app_layout, initial_sidebar_state=st.secrets.appconfig.app_initial_sidebar)
@@ -14,6 +14,8 @@ ss.initialize_session_states()
 
 # 3. Set Page Title
 ps.set_title_manual(varTitle="SpartakusAI", varSubtitle="Login / Registration", varDiv=True)
+
+
 
 # 4. Initialize UserFlow
 user_flow = user_class.UserFlow()
