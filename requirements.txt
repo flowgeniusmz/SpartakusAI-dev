@@ -38,3 +38,4 @@ playwright
 scrapegraphai
 yelpapi
 googlemaps
+pydantic
